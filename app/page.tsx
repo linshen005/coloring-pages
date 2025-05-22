@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { categoryData } from './data/categoryMap';
+import { categoryData } from '@/app/data/categoryMap';
 
 export default function Home() {
   return (

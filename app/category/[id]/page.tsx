@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { createMetadata } from '../../utils/metadata';
-import { categoryData } from '../../data/categoryMap';
+import { categoryData } from '@/app/data/categoryMap';
 import type { Metadata } from 'next';
 
 type Props = {
@@ -12,18 +11,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const category = categoryData[params.id as keyof typeof categoryData];
   
   if (!category) {
-    return createMetadata({
+    return {
       title: 'Page Not Found',
       description: 'The requested coloring page category could not be found.',
-      url: `/category/${params.id}`,
-    });
+      alternates: {
+        canonical: `https://coloringpageprint.com/category/${params.id}`,
+      },
+    };
   }
 
-  return createMetadata({
+  return {
     title: category.title,
     description: category.description,
-    url: `/category/${params.id}`,
-  });
+    alternates: {
+      canonical: `https://coloringpageprint.com/category/${params.id}`,
+    },
+    openGraph: {
+      title: category.title,
+      description: category.description,
+      url: `https://coloringpageprint.com/category/${params.id}`,
+      images: [{ url: category.images[0].imageUrl }],
+    },
+  };
 }
 
 export default function CategoryPage({ params }: Props) {

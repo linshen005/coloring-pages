@@ -11,10 +11,19 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Kids Coloring Pages - Free Printable",
   description: "Free printable coloring pages for kids featuring Pokemon, Animals, Disney characters and more themes.",
+  metadataBase: new URL('https://coloringpageprint.com'),
   icons: {
     icon: "/favicon.ico",
   },
   manifest: "/manifest.json",
+  openGraph: {
+    type: 'website',
+    siteName: 'Coloring Page Print',
+    url: 'https://coloringpageprint.com',
+  },
+  alternates: {
+    canonical: 'https://coloringpageprint.com',
+  },
 };
 
 export default function RootLayout({

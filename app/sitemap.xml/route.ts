@@ -1,7 +1,7 @@
-import { categoryData } from '../data/categoryMap';
+import { categoryData } from '@/app/data/categoryMap';
 
 export async function GET() {
-  const baseUrl = 'https://example.com';
+  const baseUrl = 'https://coloringpageprint.com';
   const currentDate = new Date().toISOString();
 
   const urls = Object.keys(categoryData).map(key => `
