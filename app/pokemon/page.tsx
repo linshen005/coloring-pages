@@ -1,14 +1,23 @@
 import Image from 'next/image';
-import { createMetadata } from '../../utils/metadata';
-import { pokemonColoringPages, type ColoringPage } from '../../data/categories';
+import { categoryData } from '@/app/data/categoryMap';
+import type { Metadata } from 'next';
 
-export const metadata = createMetadata({
+export const metadata: Metadata = {
   title: 'Pokemon Coloring Pages',
   description: 'Download and print free Pokemon coloring pages like Pikachu, Charizard, and more.',
-  url: '/pokemon',
-});
+  alternates: {
+    canonical: 'https://coloringpageprint.com/pokemon',
+  },
+  openGraph: {
+    title: 'Pokemon Coloring Pages',
+    description: 'Download and print free Pokemon coloring pages like Pikachu, Charizard, and more.',
+    url: 'https://coloringpageprint.com/pokemon',
+  },
+};
 
 export default function PokemonColoringPages() {
+  const pokemonPages = categoryData.pokemon.images;
+
   return (
     <main className="min-h-screen px-4 py-8 md:px-8">
       <div className="max-w-7xl mx-auto">
@@ -22,14 +31,14 @@ export default function PokemonColoringPages() {
         </header>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {pokemonColoringPages.map((page: ColoringPage) => (
+          {pokemonPages.map((page) => (
             <article 
               key={page.id}
               className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg"
             >
               <div className="aspect-w-4 aspect-h-3 relative">
                 <Image
-                  src={page.image}
+                  src={page.imageUrl}
                   alt={`${page.title} coloring page`}
                   title={page.title}
                   fill

@@ -1,14 +1,23 @@
 import Image from 'next/image';
-import { createMetadata } from '../../utils/metadata';
-import { catColoringPages, type ColoringPage } from '../../data/categories';
+import { categoryData } from '@/app/data/categoryMap';
+import type { Metadata } from 'next';
 
-export const metadata = createMetadata({
+export const metadata: Metadata = {
   title: 'Cat Coloring Pages',
   description: 'Download and print free cat coloring pages for kids. Cute and funny cats to color and enjoy!',
-  url: '/cat',
-});
+  alternates: {
+    canonical: 'https://coloringpageprint.com/cat',
+  },
+  openGraph: {
+    title: 'Cat Coloring Pages',
+    description: 'Download and print free cat coloring pages for kids. Cute and funny cats to color and enjoy!',
+    url: 'https://coloringpageprint.com/cat',
+  },
+};
 
 export default function CatColoringPages() {
+  const catPages = categoryData.cat.images;
+
   return (
     <main className="min-h-screen px-4 py-8 md:px-8">
       <div className="max-w-7xl mx-auto">
@@ -22,14 +31,14 @@ export default function CatColoringPages() {
         </header>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {catColoringPages.map((page: ColoringPage) => (
+          {catPages.map((page) => (
             <article 
               key={page.id}
               className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg"
             >
               <div className="aspect-w-4 aspect-h-3 relative">
                 <Image
-                  src={page.image}
+                  src={page.imageUrl}
                   alt={`${page.title} cat coloring page`}
                   title={page.title}
                   fill
