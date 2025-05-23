@@ -16,41 +16,38 @@ export const categoryData: Record<string, Category> = {
     title: 'Pokemon Coloring Pages',
     description: 'Bring your favorite Pokemon characters to life with these free coloring pages featuring Pikachu, Charizard, and more.',
     images: [
-      { id: 1, title: 'Pikachu', imageUrl: 'https://via.placeholder.com/400x250?text=Pokemon', pdf: '/pdfs/pokemon/pikachu.pdf' },
-      { id: 2, title: 'Charizard', imageUrl: 'https://via.placeholder.com/400x250?text=Pokemon', pdf: '/pdfs/pokemon/charizard.pdf' },
-      { id: 3, title: 'Eevee', imageUrl: 'https://via.placeholder.com/400x250?text=Pokemon', pdf: '/pdfs/pokemon/eevee.pdf' }
+      { id: 1, title: 'Pokemon', imageUrl: '/images/pokemon/pokemon.jpg', pdf: '/pdfs/pokemon/pikachu.pdf' }
     ]
   },
   cat: {
     title: 'Cat Coloring Pages',
     description: 'Adorable cat coloring pages perfect for kids who love feline friends. Features cute kittens and playful cats.',
     images: [
-      { id: 1, title: 'Playful Kitten', imageUrl: 'https://via.placeholder.com/400x250?text=Cat', pdf: '/pdfs/cats/kitten.pdf' },
-      { id: 2, title: 'Sleeping Cat', imageUrl: 'https://via.placeholder.com/400x250?text=Cat', pdf: '/pdfs/cats/sleeping.pdf' }
+      { id: 1, title: 'Playful Kitten', imageUrl: '/images/cat/playful-kitten.jpg', pdf: '/pdfs/cats/kitten.pdf' }
     ]
   },
   flower: {
     title: 'Flower Coloring Pages',
     description: 'Beautiful flower coloring pages featuring roses, tulips, and garden scenes for nature lovers of all ages.',
     images: [
-      { id: 1, title: 'Rose Garden', imageUrl: 'https://via.placeholder.com/400x250?text=Flower', pdf: '/pdfs/flowers/rose.pdf' },
-      { id: 2, title: 'Spring Tulips', imageUrl: 'https://via.placeholder.com/400x250?text=Flower', pdf: '/pdfs/flowers/tulips.pdf' }
+      { id: 1, title: 'Rose Garden', imageUrl: '/images/flower/flower-rose-garden.jpg', pdf: '/pdfs/flowers/rose.pdf' },
+      { id: 2, title: 'Spring Tulips', imageUrl: '/images/flower/flower-spring-tulips.jpg', pdf: '/pdfs/flowers/tulips.pdf' }
     ]
   },
   dinosaur: {
     title: 'Dinosaur Coloring Pages',
     description: 'Exciting dinosaur coloring pages featuring T-Rex, Triceratops, and other prehistoric creatures for young adventurers.',
     images: [
-      { id: 1, title: 'T-Rex', imageUrl: 'https://via.placeholder.com/400x250?text=Dinosaur', pdf: '/pdfs/dinosaurs/trex.pdf' },
-      { id: 2, title: 'Triceratops', imageUrl: 'https://via.placeholder.com/400x250?text=Dinosaur', pdf: '/pdfs/dinosaurs/triceratops.pdf' }
+      { id: 1, title: 'T-Rex', imageUrl: '/images/dinosaur/t-rex.jpg', pdf: '/pdfs/dinosaurs/trex.pdf' },
+      { id: 2, title: 'Cute Dinosaur', imageUrl: '/images/dinosaur/dinosaur-cute.jpg', pdf: '/pdfs/dinosaurs/triceratops.pdf' }
     ]
   },
   princess: {
     title: 'Princess Coloring Pages',
     description: 'Magical princess coloring pages featuring beautiful princesses, castles, and fairy tale scenes for little dreamers.',
     images: [
-      { id: 1, title: 'Castle Princess', imageUrl: 'https://via.placeholder.com/400x250?text=Princess', pdf: '/pdfs/princess/castle.pdf' },
-      { id: 2, title: 'Fairy Princess', imageUrl: 'https://via.placeholder.com/400x250?text=Princess', pdf: '/pdfs/princess/fairy.pdf' }
+      { id: 1, title: 'Castle Princess', imageUrl: '/images/princess/princess-castle-gown.jpg', pdf: '/pdfs/princess/castle.pdf' },
+      { id: 2, title: 'Fairy Princess', imageUrl: '/images/princess/princess-fairy-wings.jpg', pdf: '/pdfs/princess/fairy.pdf' }
     ]
   }
 }; 

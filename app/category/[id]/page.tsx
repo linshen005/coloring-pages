@@ -43,37 +43,36 @@ export default function CategoryPage({ params }: Props) {
   }
 
   return (
-    <main className="min-h-screen p-4 md:p-8">
-      {/* Page Title */}
+    <main className="min-h-screen p-4 md:p-8 bg-[#fdf6e3]">
+      {/* Page Title and Description */}
       <div className="max-w-7xl mx-auto mb-12">
-        <h1 className="text-4xl font-bold mb-4">{category.title}</h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300">
+        <h1 className="text-4xl font-bold mb-4 font-comic text-center">{category.title}</h1>
+        <p className="text-lg text-gray-600 font-comic text-center max-w-3xl mx-auto mb-8">
           {category.description}
         </p>
+        <div className="w-full h-[2px] bg-pink-200 max-w-2xl mx-auto mb-12"></div>
       </div>
 
       {/* Images Grid */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         {category.images.map((image) => (
           <div 
             key={image.id}
-            className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg"
+            className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full max-w-[300px] flex flex-col"
           >
-            <div className="aspect-w-16 aspect-h-9 relative">
-              <Image
+            <div className="aspect-[4/3] w-full">
+              <img
                 src={image.imageUrl}
                 alt={image.title}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover"
+                className="w-full h-full object-cover rounded-t-xl"
               />
             </div>
-            <div className="p-4">
-              <h2 className="text-lg font-semibold mb-2">{image.title}</h2>
+            <div className="p-5 flex flex-col gap-4">
+              <h2 className="text-xl font-bold font-comic">{image.title}</h2>
               <a
                 href={image.pdf}
                 download
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-medium py-2 px-4 rounded transition-colors inline-block"
+                className="inline-block w-full bg-pink-500 hover:bg-pink-600 text-white text-center font-bold py-3 px-6 rounded-full transition-all duration-300 hover:scale-[1.02] font-comic"
               >
                 Download PDF
               </a>

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Comic_Neue } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Header from "./components/Header";
 
-const inter = Inter({
+const comic = Comic_Neue({
+  weight: ['300', '400', '700'],
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-comic",
 });
 
 export const metadata: Metadata = {
@@ -48,7 +49,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${comic.variable} font-comic bg-[#fefefe] dark:bg-[#1f2937] text-gray-800 dark:text-gray-200`}>
         <Header />
         {children}
       </body>

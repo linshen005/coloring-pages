@@ -6,7 +6,11 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        comic: ['var(--font-comic)', 'Comic Sans MS', 'cursive'],
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
