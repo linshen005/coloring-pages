@@ -2,10 +2,18 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { categoryData } from '@/app/data/categoryMap';
 import type { Metadata } from 'next';
+import fs from 'fs';
+import path from 'path';
 
 type Props = {
   params: { id: string }
 };
+
+// 检查PDF文件是否存在
+function checkPdfExists(pdfPath: string): boolean {
+  const fullPath = path.join(process.cwd(), 'public', pdfPath);
+  return fs.existsSync(fullPath);
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const category = categoryData[params.id as keyof typeof categoryData];
@@ -55,30 +63,40 @@ export default function CategoryPage({ params }: Props) {
 
       {/* Images Grid */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-        {category.images.map((image) => (
-          <div 
-            key={image.id}
-            className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full max-w-[300px] flex flex-col"
-          >
-            <div className="aspect-[4/3] w-full">
-              <img
-                src={image.imageUrl}
-                alt={image.title}
-                className="w-full h-full object-cover rounded-t-xl"
-              />
+        {category.images.map((image) => {
+          const pdfExists = checkPdfExists(image.pdf);
+          
+          return (
+            <div 
+              key={image.id}
+              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full max-w-[300px] flex flex-col"
+            >
+              <div className="aspect-[4/3] w-full">
+                <img
+                  src={image.imageUrl}
+                  alt={image.title}
+                  className="w-full h-full object-cover rounded-t-xl"
+                />
+              </div>
+              <div className="p-5 flex flex-col gap-4">
+                <h2 className="text-xl font-bold font-comic">{image.title}</h2>
+                {pdfExists ? (
+                  <a
+                    href={image.pdf}
+                    download
+                    className="inline-block w-full bg-pink-500 hover:bg-pink-600 text-white text-center font-bold py-3 px-6 rounded-full transition-all duration-300 hover:scale-[1.02] font-comic"
+                  >
+                    Download PDF
+                  </a>
+                ) : (
+                  <div className="inline-block w-full bg-gray-400 text-white text-center font-bold py-3 px-6 rounded-full font-comic cursor-not-allowed">
+                    PDF Not Available
+                  </div>
+                )}
+              </div>
             </div>
-            <div className="p-5 flex flex-col gap-4">
-              <h2 className="text-xl font-bold font-comic">{image.title}</h2>
-              <a
-                href={image.pdf}
-                download
-                className="inline-block w-full bg-pink-500 hover:bg-pink-600 text-white text-center font-bold py-3 px-6 rounded-full transition-all duration-300 hover:scale-[1.02] font-comic"
-              >
-                Download PDF
-              </a>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </main>
   );
